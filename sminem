@@ -1,0 +1,26 @@
+import json
+
+# Replace this with the IPFS CID for your collection
+ipfs_cid = ""
+
+# Function to create metadata for each NFT
+def create_nft_metadata(token_id):
+    metadata = {
+        "name": f"Sminems #{token_id}",
+        "description": "by the $OGSM https://sminem.org : 2222 unique Sminems, each with a scannable blessing written by Roman himself. You need to answer the call.",
+        "image": f"ipfs://{ipfs_cid}/{token_id}.png",  # Assuming the image file is named <token_id>.png in the IPFS CID
+    }
+    return metadata
+
+# List to store metadata for all NFTs
+nfts_metadata = []
+
+# Create metadata for the entire collection of 2222 NFTs
+for token_id in range(1, 2223):
+    nfts_metadata.append(create_nft_metadata(token_id))
+
+# Save the metadata to a JSON file as a JSON array
+with open("nfts_collection_metadata.json", "w") as json_file:
+    json.dump(nfts_metadata, json_file, indent=4)
+
+print("Metadata for all NFTs created and saved to nfts_collection_metadata.json")
